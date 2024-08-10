@@ -1,7 +1,7 @@
 // pages/api/reports.js
 import { NextResponse } from 'next/server';
 import connectTodb from '@/lib/mongodb';
-import Report from '@/lib/models/Report';
+import Report from '@/lib/models/report';
 
 // creating the post method
 export async function POST(request) {

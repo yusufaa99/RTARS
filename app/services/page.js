@@ -2,7 +2,7 @@
 import Header from '@/components/Header';
 // import Servicescard from "@/Components/Servicescard";
 import { useEffect } from 'react';
-export default function services() {
+export default function Services() {
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap.bundle.min.js");
     }, []);

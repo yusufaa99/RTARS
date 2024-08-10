@@ -1,5 +1,5 @@
 
-export default function studentlist() {
+export default function Studentlist() {
     return (
         <>
             <div className="container">

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import ProfileClient from "./components/user-client";
 import ProfileServer from "./components/user-server";
 
-const profile = async () => {
+const Profile = async () => {
   const session = await getSession();
   const user = session?.user;
 
@@ -28,4 +28,4 @@ const profile = async () => {
   )
 }
 
-export default profile
+export default Profile

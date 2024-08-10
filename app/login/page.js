@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from 'react';
 import Header from '@/components/Header';
-export default function login() {
+export default function Login() {
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap.bundle.min.js");
     }, []);

@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useEffect } from 'react';
-export default function about() {
+export default function About() {
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap.bundle.min.js");
     }, []);

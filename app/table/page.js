@@ -1,5 +1,5 @@
 
-export default function table() {
+export default function Table() {
     return (
         <>
             <div className="container">

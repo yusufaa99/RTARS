@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
     
 // use effect method
-export default function signup() {
+export default function Signup() {
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap.bundle.min.js");
     }, []);

@@ -2,7 +2,7 @@
 import Header from "@/components/Header";
 
 import { useEffect } from 'react';
-export default function mission() {
+export default function Mission() {
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap.bundle.min.js");
     }, []);

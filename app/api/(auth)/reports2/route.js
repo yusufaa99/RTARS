@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
 // import connectTodb from '@/lib/mongodb';
-import Report2 from '@/lib/models/Report2';
+import Report2 from '@/lib/models/report2';
 
 export async function POST(req) {
   try {

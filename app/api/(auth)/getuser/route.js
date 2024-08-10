@@ -1,7 +1,7 @@
 // pages/api/getReports.js
 import { getSession } from "@auth0/nextjs-auth0";
-import dbConnect from "@/lib/dbConnect";
-import Report from "@/models/Report"; // Assuming you have a Report model
+import dbConnect from "@/lib/db";
+import Report from "@/models/report"; // Assuming you have a Report model
 
 export default async function handler(req, res) {
   try {

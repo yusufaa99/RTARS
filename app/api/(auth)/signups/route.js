@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 // import connectTodb from "@/lib/mongodb";
 import connect from "@/lib/mongodb";
-import Signup from "@/lib/models/Signup";
+import Signup from "@/lib/models/signup";
 export const dynamic = 'force-dynamic';
 
 // CREATING GET HTTP METHOD

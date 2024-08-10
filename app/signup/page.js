@@ -1,10 +1,11 @@
 "use client"
 import { useEffect, useState } from 'react';
-import bg from "C:/School_portal_nextApp/iacasol/public/pictures/home1.png";
+// import bg from "/public/pictures/home1.png";
 // import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { POST } from '../api/(auth)/users/route';
 import { useRouter } from 'next/navigation';
+
     
 // use effect method
 export default function signup() {

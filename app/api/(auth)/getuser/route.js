@@ -19,3 +19,25 @@
 //     res.status(500).json({ message: error.message });
 //   }
 // }
+
+// app/api/(auth)/getuser/route.js
+
+// Import necessary modules (if needed)
+import { NextResponse } from 'next/server';
+
+// Example GET handler
+export async function GET(request) {
+  // Your logic here, e.g., fetching user data
+  const userData = { name: 'John Doe', email: 'john@example.com' };
+  
+  return NextResponse.json(userData);
+}
+
+// Example POST handler
+export async function POST(request) {
+  // Handle POST requests if necessary
+  const data = await request.json();
+  
+  // Process data and return a response
+  return NextResponse.json({ message: 'User data received', data });
+}

@@ -121,10 +121,10 @@ export default function Reports() {
         <>
             <div className="container">
                 <h1 className="my-4">Road Traffic Accident Reporting System</h1>
-                
+
                 <div className='row'>
-                    <div className='col-sm-3'></div>
-                    <div className='col-sm-6'>
+                    <div className='col-sm-2'></div>
+                    <div className='col-sm-8'>
                         <form onSubmit={handleSubmit}>
                             <h2>Incident Details</h2>
                             <div className="mb-3">
@@ -143,108 +143,119 @@ export default function Reports() {
                                 <label htmlFor="roadType" className="form-label">Road Type</label>
                                 <input type="text" className="form-control" id="roadType" value={roadType} onChange={(e) => setRoadType(e.target.value)} />
                             </div>
-                            <h2>Vehicles Details</h2>
-                            <div className="mb-3">
-                                <label htmlFor="vehicle1_licensePlate" className="form-label">Vehicle 1 License Plate</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="vehicle1_licensePlate"
-                                    value={vehicle1LicensePlate}
-                                    onChange={(e) => setVehicle1LicensePlate(e.target.value)}
-                                />
+                            <div className="row">
+                                <h2>Vehicle 1 Details</h2>
+                                <div className="mb-3 col-sm-5">
+                                    <label htmlFor="vehicle1_licensePlate" className="form-label">Vehicle 1 License Plate</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="vehicle1_licensePlate"
+                                        value={vehicle1LicensePlate}
+                                        onChange={(e) => setVehicle1LicensePlate(e.target.value)}
+                                    />
+                                </div>
+                                <div className="mb-3 col-sm-4">
+                                    <label htmlFor="vehicle1_make" className="form-label">Vehicle 1 Make</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="vehicle1_make"
+                                        value={vehicle1Make}
+                                        onChange={(e) => setVehicle1Make(e.target.value)}
+                                    />
+                                </div>
+                                <div className="mb-3 col-sm-3">
+                                    <label htmlFor="vehicle1_model" className="form-label">Vehicle 1 Model</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="vehicle1_model"
+                                        value={vehicle1Model}
+                                        onChange={(e) => setVehicle1Model(e.target.value)}
+                                    />
+                                </div>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="vehicle1_make" className="form-label">Vehicle 1 Make</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="vehicle1_make"
-                                    value={vehicle1Make}
-                                    onChange={(e) => setVehicle1Make(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="vehicle1_model" className="form-label">Vehicle 1 Model</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="vehicle1_model"
-                                    value={vehicle1Model}
-                                    onChange={(e) => setVehicle1Model(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="vehicle2_licensePlate" className="form-label">Vehicle 2 License Plate</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="vehicle2_licensePlate"
-                                    value={vehicle2LicensePlate}
-                                    onChange={(e) => setVehicle2LicensePlate(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="vehicle2_make" className="form-label">Vehicle 2 Make</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="vehicle2_make"
-                                    value={vehicle2Make}
-                                    onChange={(e) => setVehicle2Make(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="vehicle2_model" className="form-label">Vehicle 2 Model</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="vehicle2_model"
-                                    value={vehicle2Model}
-                                    onChange={(e) => setVehicle2Model(e.target.value)}
-                                />
-                            </div>
+                            <div className="row">
+                                <h2>Vehicle 2 Details</h2>
+                                <div className="mb-3 col-sm-5">
+                                    <label htmlFor="vehicle2_licensePlate" className="form-label">Vehicle 2 License Plate</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="vehicle2_licensePlate"
+                                        value={vehicle2LicensePlate}
+                                        onChange={(e) => setVehicle2LicensePlate(e.target.value)}
+                                    />
+                                </div>
+                                <div className="mb-3 col-sm-4">
+                                    <label htmlFor="vehicle2_make" className="form-label">Vehicle 2 Make</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="vehicle2_make"
+                                        value={vehicle2Make}
+                                        onChange={(e) => setVehicle2Make(e.target.value)}
+                                    />
+                                </div>
+                                <div className="mb-3 col-sm-3">
+                                    <label htmlFor="vehicle2_model" className="form-label">Vehicle 2 Model</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="vehicle2_model"
+                                        value={vehicle2Model}
+                                        onChange={(e) => setVehicle2Model(e.target.value)}
+                                    />
+                                </div>
 
-                            <h2>Drivers Details</h2>
-                            <div className="mb-3">
-                                <label htmlFor="driver1_name" className="form-label">Driver 1 Name</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="driver1_name"
-                                    value={driver1Name}
-                                    onChange={(e) => setDriver1Name(e.target.value)}
-                                />
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="driver1_licenseNumber" className="form-label">Driver 1 License Number</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="driver1_licenseNumber"
-                                    value={driver1LicenseNumber}
-                                    onChange={(e) => setDriver1LicenseNumber(e.target.value)}
-                                />
+                            <div className='row'>
+                                <h2>Driver 2 Details</h2>
+                                <div className="mb-3 col-sm-6">
+                                    <label htmlFor="driver1_name" className="form-label">Driver 1 Name</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="driver1_name"
+                                        value={driver1Name}
+                                        onChange={(e) => setDriver1Name(e.target.value)}
+                                    />
+                                </div>
+                                <div className="mb-3 col-sm-6">
+                                    <label htmlFor="driver1_licenseNumber" className="form-label">Driver 1 License Number</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="driver1_licenseNumber"
+                                        value={driver1LicenseNumber}
+                                        onChange={(e) => setDriver1LicenseNumber(e.target.value)}
+                                    />
+                                </div>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="driver2_name" className="form-label">Driver 2 Name</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="driver2_name"
-                                    value={driver2Name}
-                                    onChange={(e) => setDriver2Name(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="driver2_licenseNumber" className="form-label">Driver 2 License Number</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="driver2_licenseNumber"
-                                    value={driver2LicenseNumber}
-                                    onChange={(e) => setDriver2LicenseNumber(e.target.value)}
-                                />
+                            <div className="row">
+                                <h2>Driver 2 Details</h2>
+                                <div className="mb-3 col-sm-6">
+                                    <label htmlFor="driver2_name" className="form-label">Driver 2 Name</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="driver2_name"
+                                        value={driver2Name}
+                                        onChange={(e) => setDriver2Name(e.target.value)}
+                                    />
+                                </div>
+                                <div className="mb-3 col-sm-6">
+                                    <label htmlFor="driver2_licenseNumber" className="form-label">Driver 2 License Number</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="driver2_licenseNumber"
+                                        value={driver2LicenseNumber}
+                                        onChange={(e) => setDriver2LicenseNumber(e.target.value)}
+                                    />
+                                </div>
+
                             </div>
 
                             <h2>Collision Details</h2>
@@ -266,6 +277,7 @@ export default function Reports() {
                                     onChange={(e) => setCollisionDescription(e.target.value)}
                                 />
                             </div>
+                            <h2>Injuries Details</h2>
                             <div className="form-group mb-3">
                                 <label htmlFor="injuriesDescription">Injuries Description</label>
                                 <textarea
@@ -288,7 +300,9 @@ export default function Reports() {
                             <button type="submit" className="btn btn-primary">Submit Report</button>
                         </form>
                     </div>
-                    <div className='col-sm-3'></div>
+                    <div className='col-sm-2'>
+
+                    </div>
                 </div>
             </div>
             <Footer />

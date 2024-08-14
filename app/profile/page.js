@@ -13,16 +13,21 @@ const Profile = async () => {
   
   return (
     <div className="container flex items-center justify-center w-full mt-10">
-      <div className="row flex items-center justify-between w-full">
-        <div className="col-sm-5 text-2xl">
+      <center>
+            <h3>Hello, {user.name} welcome to your Profile</h3>
+            </center>
+      <div className="row flex items-center ustify-center w-full">
+        <center>
+        <div className="col-sm-5 text-2xl ">
         <ProfileClient/>        
         </div>
-        <div className="col-sm-2 text-2xl">
+        </center>
+        {/* <div className="col-sm-2 text-2xl">
 
         </div>
         <div className="col-sm-5 text-2xl">
           <ProfileServer/>
-        </div>
+        </div> */}
       </div>
     </div>
   )

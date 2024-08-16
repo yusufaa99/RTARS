@@ -13,6 +13,9 @@ export default function Contact() {
         <>
              {/* <Header /> */}
             <div className="container-fluid">
+                <marquee>
+                <h1>Welcome To Contact Us Page</h1>
+                </marquee>
                 {/* <Contactuscard/> */}
                 <div className="row" id="contactid">
                     <div className="col-md-3">

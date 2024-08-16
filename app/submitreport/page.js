@@ -3,13 +3,30 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+
 
 
 const LeafletMap = dynamic(() => import('@/components/LeafletMap'), { ssr: false });
 
+
+
 export default function Reports() {
+    const [showMessage, setShowMessage] = useState(false);
+    const [message, setMessage] = useState('');
+    useEffect(() => {
+        if (message) {
+            setShowMessage(true);
+            const timer = setTimeout(() => {
+                setShowMessage(false);
+            }, 5000); // 5000 milliseconds = 5 seconds
+
+            // Cleanup function to clear the timer if the component unmounts
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
+
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [lat, setLat] = useState(null);
@@ -86,6 +103,24 @@ export default function Reports() {
                 // const result = JSON.parse(text); // Parse JSON
                 const result = await response.json();
                 console.log('Report submitted successfully:', result);
+                // Send SMS after successful report submission
+                const smsResponse = await fetch('http://localhost:3000/api/sms', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (smsResponse.ok) {
+                    console.log('SMS sent successfully');
+                } else {
+                    console.error('Failed to send SMS');
+                }
+
+                // Display a success message
+                setMessage('Thank you! The report was submitted successfully.');
+
                 alert('Thank You, The Report submitted successfully:', result);
 
                 // Clear form data by resetting all state variables
@@ -113,7 +148,8 @@ export default function Reports() {
 
         } catch (error) {
             console.error('Error submitting report:', error);
-            alert(error('Error submitting report:', error));
+            setMessage('Error submitting report: ' + error.message);
+            alert(('Error submitting report:', error.message));
         }
     };
 
@@ -121,7 +157,11 @@ export default function Reports() {
         <>
             <div className="container">
                 <h1 className="my-4">Road Traffic Accident Reporting System</h1>
-
+                {showMessage && (
+                    <div className="alert alert-info" role="alert">
+                        {message}
+                    </div>
+                )}
                 <div className='row'>
                     <div className='col-sm-2'></div>
                     <div className='col-sm-8'>

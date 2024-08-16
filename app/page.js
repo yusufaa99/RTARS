@@ -25,14 +25,14 @@ export default function Home() {
       {/* <Header /> */}
       {/* <Landingpage/> */}
       <Carousal />
-      <div className="row">
+      {/* <div className="row">
         <div className="col-sm-sm mx-20px">
-          {/* <p className="about" id="p1about">
+          <p className="about" id="p1about">
             Our mission is to provide a robust platform that allows users to report road accidents promptly, ensuring that critical information reaches the relevant authorities without delay. By leveraging modern technology, we strive to reduce response times, improve data accuracy, and ultimately save lives.
-          </p> */}
+          </p>
         </div>
 
-      </div>
+      </div> */}
       <Footer />
     </>
 

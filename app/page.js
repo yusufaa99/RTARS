@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect } from "react";
 import Header from "@/components/Header";
-import Landingpage from "@/components/Landingpage";
+import WelcomeNote from "@/components/WelcomeNote"
 import Carousal from "@/components/Carousal";
 import Footer from "@/components/Footer";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -22,9 +22,10 @@ export default function Home() {
 
   return (
     <>
+    <WelcomeNote />
       {/* <Header /> */}
       {/* <Landingpage/> */}
-      <Carousal />
+      
       {/* <div className="row">
         <div className="col-sm-sm mx-20px">
           <p className="about" id="p1about">

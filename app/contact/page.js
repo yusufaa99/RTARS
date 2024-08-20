@@ -50,9 +50,9 @@ export default function Contact() {
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-success mb-3 rounded-20">Submit</button>
                             </div>
-                            <div className='row mb-3'>
+                            {/* <div className='row mb-3'>
                                 <p>if you dont have an Account click <span><a href='/signup'>sign up</a></span> to create Account ?</p>
-                            </div>
+                            </div> */}
                         </div>
 
                     </div>

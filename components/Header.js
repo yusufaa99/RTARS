@@ -6,13 +6,15 @@ import LoginButton from "./Login_Button";
 import LogoutButton from "./Logout_Button";
 import ProfileButton from "./Profile_Button";
 import ReportsButton from "./Reports_Button";
+import LocationsButton from "./Location_Button";
+
 function Header() {
   const { user, error, isLoading } = useUser();
   return (
     <nav class="navbar navbar-expand-lg bg-success px-5">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          {/* <img alt="SCHOOL logo" src="/pictures/schoollogo2.png" width="30px" className="px-1" /> */}
+          <img alt="SCHOOL logo" src="/pictures/Car accident Logo.png" style={{ backgroundColor: '#333', borderRadius: '50%', width: "70px", height: "50px"}}className="px-1" />
           RTARS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -73,6 +75,7 @@ function Header() {
                 <li class="nav-item "><ReportsButton /></li>
                 <li class="nav-item "><ProfileButton /></li>
                 <li class="nav-item "><LogoutButton /></li>
+                <li class="nav-item "><LocationsButton /></li>
               </>
             )
             }

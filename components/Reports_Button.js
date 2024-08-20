@@ -1,5 +1,5 @@
 const ReportsButton = () => {
-    return <a href="/viereports" className="btn btn-primary mx-0">View Reports</a>
+    return <a href="/viereports" className="btn btn-primary mx-1 my-2">View Reports</a>
 
 }
 

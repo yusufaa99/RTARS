@@ -17,7 +17,7 @@
   }
   
   .page-footer{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     padding-top: 100px;
     color: black;
     background-color: rgb(216, 223, 231);
@@ -106,4 +106,10 @@
 .table th {
   border: 2px solid black;
   padding: 8px; /* Optional: Add padding for better readability */
+}
+
+strong{
+  color: black;
+  font-weight: bolder;
+  font-style: italic;
 }

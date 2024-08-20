@@ -29,36 +29,16 @@ export async function POST(req) {
   }
 }
 
-// export async function POST(request) {
-//   try {
-//       await connectToDatabase();
-//       const data = await request.json();
-//       const { date, time, lat, lng, roadType, vehicle1_licensePlate, vehicle1_make, vehicle1_model, vehicle2_licensePlate, vehicle2_make, vehicle2_model, driver1_name, driver1_licenseNumber, driver2_name, driver2_licenseNumber, collisionResult, collisionDescription, injuriesDescription, damagesDescription } = data;
-
-//       if (lat === undefined || lng === undefined) {
-//           throw new Error('Latitude or Longitude is undefined');
-//       }
-
-//       console.log('Received data:', data);
-
-//       // Process the data (e.g., save to database)
-
-//       return new Response(JSON.stringify({ message: 'Report submitted successfully' }), { status: 200 });
-//   } catch (error) {
-//       console.error('Error processing request:', error);
-//       return new Response(JSON.stringify({ message: 'Error submitting report', error: error.message }), { status: 500 });
-//   }
-// }
-
 
 export async function GET() {
   try {
     await connectToDatabase();
-    // Fetch all reports from the database
-    const reports = await Report2.find({});
+    // Fetch all reports from the database, sorted by _id in descending order
+    const reports = await Report2.find({}).sort({ _id: -1 });
     return NextResponse.json(reports, { status: 200 });
   } catch (error) {
     console.error('Error fetching reports:', error);
     return NextResponse.json({ error: 'Error fetching reports' }, { status: 500 });
   }
 }
+

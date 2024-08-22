@@ -160,7 +160,7 @@ export default function Reports() {
                             <p className="mb-0">Please fill out the form below with as much detail as possible. Accurate information helps us respond effectively and prevent future incidents.</p>
                             <ul className="mt-2">
                                 <li>Ensure all details are correct to the best of your knowledge.</li>
-                                <li>If you're unsure about any information, it's okay to indicate that.</li>
+                                <li>If you&apos;re unsure about any information, it&apos;s okay to indicate that.</li>
                                 <li>Your report is confidential and will be used solely for official purposes.</li>
                             </ul>
                             <p>Your cooperation in this process is greatly appreciated. Stay safe on the roads!</p>

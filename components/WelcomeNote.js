@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousal from "@/components/Carousal"
+import Carousal from "@/components/Carousal";
+
 export default function WelcomeNote() {
     return (
         <div className="container mt-2">
@@ -8,11 +9,11 @@ export default function WelcomeNote() {
                 <h1 className="display-4">Welcome to the Road Traffic Accident Reporting System</h1>
                 <Carousal />
                 <p className="lead mt-4">
-                    We are committed to improving road safety and facilitating the accurate reporting of traffic accidents. This system provides an intuitive and user-friendly platform for reporting incidents, ensuring that all the necessary information is captured efficiently. 
-                    Your report plays a crucial role in road safety analysis and helps in preventing future accidents. 
+                    We are committed to improving road safety and facilitating the accurate reporting of traffic accidents. This system provides an intuitive and user-friendly platform for reporting incidents, ensuring that all the necessary information is captured efficiently.
+                    Your report plays a crucial role in road safety analysis and helps in preventing future accidents.
                 </p>
                 <p className="lead">
-                    Whether you're a witness, a driver, or a passenger involved in an accident, this system is here to help you document the incident swiftly and effectively.
+                    Whether you&apos;re a witness, a driver, or a passenger involved in an accident, this system is here to help you document the incident swiftly and effectively.
                 </p>
             </div>
 

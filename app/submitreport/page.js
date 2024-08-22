@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 
 
-const LeafletMap = dynamic(() => import('@/components/LeafletMap'), { ssr: false });
+const LeafletMap = dynamic(() => import('@/components/LeafletMap4'), { ssr: false });
 
 
 

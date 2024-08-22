@@ -1,20 +1,15 @@
 "use client";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
 import WelcomeNote from '@/components/WelcomeNote';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
-
-const LeafletMap = dynamic(() => import('@/components/LeafletMap'), { ssr: false });
-
-
+import LeafletMap from '@/components/LeafletMap4'; // Correct import
 
 export default function Reports() {
     const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState('');
+    
     useEffect(() => {
         if (message) {
             setShowMessage(true);
@@ -48,12 +43,12 @@ export default function Reports() {
     const [damagesDescription, setDamagesDescription] = useState('');
 
     const router = useRouter();
+    
     const handleLocationSelect = (location) => {
         setLat(location.lat);
         setLng(location.lng);
         console.log("Location selected:", location);
     };
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -100,11 +95,9 @@ export default function Reports() {
                 throw new Error('Network response was not ok');
             } else {
                 router.push("/submitreport");
-                // const text = await response.text(); // Read response as text
-                // const result = JSON.parse(text); // Parse JSON
                 const result = await response.json();
                 console.log('Report submitted successfully:', result);
-                // Send SMS after successful report submission
+                
                 const smsResponse = await fetch('http://localhost:3000/api/sms', {
                     method: 'POST',
                     headers: {
@@ -118,17 +111,14 @@ export default function Reports() {
                 } else {
                     console.error('Failed to send SMS');
                 }
-
-                // Display a success message
+                alert('Thank You, The Report submitted successfully:', result);
                 setMessage('Thank you! The report was submitted successfully.');
 
-                alert('Thank You, The Report submitted successfully:', result);
 
-                // Clear form data by resetting all state variables
                 setDate('');
                 setTime('');
-                setLat('');
-                setLng('');
+                setLat(null);
+                setLng(null);
                 setRoadType('');
                 setVehicle1LicensePlate('');
                 setVehicle1Make('');
@@ -145,26 +135,20 @@ export default function Reports() {
                 setInjuriesDescription('');
                 setDamagesDescription('');
             }
-
-
         } catch (error) {
             console.error('Error submitting report:', error);
             setMessage('Error submitting report: ' + error.message);
-            alert(('Error submitting report:', error.message));
         }
     };
 
     return (
         <>
             <div className="container">
-                {/* <h1 className="my-4">Road Traffic Accident Reporting System</h1> */}
-                {/* <WelcomeNote /> */}
                 {showMessage && (
                     <div className="alert alert-info" role="alert">
                         {message}
                     </div>
                 )}
-
 
                 <div className='row'>
                     <div className='col-sm-2'></div>
@@ -265,9 +249,8 @@ export default function Reports() {
                                         onChange={(e) => setVehicle2Model(e.target.value)}
                                     />
                                 </div>
-
                             </div>
-                            <div className='row'>
+                            <div className="row">
                                 <h2>Driver 1 Details</h2>
                                 <div className="mb-3 col-sm-6">
                                     <label htmlFor="driver1_name" className="form-label">Driver 1 Name</label>
@@ -312,330 +295,54 @@ export default function Reports() {
                                         onChange={(e) => setDriver2LicenseNumber(e.target.value)}
                                     />
                                 </div>
-
                             </div>
-
-                            <h2>Collision Details</h2>
-                            <div className="form-group mb-3">
-                                <label htmlFor="collisionResult">Collision Result</label>
-                                <textarea
+                            <div className="mb-3">
+                                <label htmlFor="collisionResult" className="form-label">Collision Result</label>
+                                <input
+                                    type="text"
                                     className="form-control"
                                     id="collisionResult"
                                     value={collisionResult}
                                     onChange={(e) => setCollisionResult(e.target.value)}
                                 />
                             </div>
-                            <div className="form-group mb-3">
-                                <label htmlFor="collisionDescription">Collision Description</label>
+                            <div className="mb-3">
+                                <label htmlFor="collisionDescription" className="form-label">Collision Description</label>
                                 <textarea
                                     className="form-control"
                                     id="collisionDescription"
+                                    rows="3"
                                     value={collisionDescription}
                                     onChange={(e) => setCollisionDescription(e.target.value)}
-                                />
+                                ></textarea>
                             </div>
-                            <h2>Injuries Details</h2>
-                            <div className="form-group mb-3">
-                                <label htmlFor="injuriesDescription">Injuries Description</label>
+                            <div className="mb-3">
+                                <label htmlFor="injuriesDescription" className="form-label">Injuries Description</label>
                                 <textarea
                                     className="form-control"
                                     id="injuriesDescription"
+                                    rows="3"
                                     value={injuriesDescription}
                                     onChange={(e) => setInjuriesDescription(e.target.value)}
-                                />
+                                ></textarea>
                             </div>
-                            <div className="form-group mb-3">
-                                <label htmlFor="damagesDescription">Damages Description</label>
+                            <div className="mb-3">
+                                <label htmlFor="damagesDescription" className="form-label">Damages Description</label>
                                 <textarea
                                     className="form-control"
                                     id="damagesDescription"
+                                    rows="3"
                                     value={damagesDescription}
                                     onChange={(e) => setDamagesDescription(e.target.value)}
-                                />
+                                ></textarea>
                             </div>
-                            <button type="submit" className="btn mb-50 btn-primary">Submit Report</button>
-
+                            <button type="submit" className="btn btn-primary">Submit Report</button>
                         </form>
                     </div>
-                    <div className='col-sm-2'>
-
-                    </div>
+                    <div className='col-sm-2'></div>
                 </div>
             </div>
             <Footer />
         </>
     );
 }
-
-
-{/* collisionResult: 
-- Two vehicles involved: a sedan and an SUV.
-- Moderate damage to the front bumper and hood of the sedan.
-- Minor damage to the rear bumper of the SUV.
-- Driver of the sedan sustained minor injuries (whiplash).
-- No injuries reported for the driver and passengers of the SUV.
-- No fatalities.
-- Airbags deployed in the sedan. */}
-
-// // pages/reports.js
-
-// "use client";
-// import React, { useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
-// import dynamic from 'next/dynamic';
-// import Footer from '@/components/Footer';
-
-// const LeafletMap = dynamic(() => import('@/components/LeafletMap'), { ssr: false });
-
-// const Reports = () => {
-//     const [formData, setFormData] = useState({
-//         date: '',
-//         time: '',
-//         location: { lat: '', lng: '' },
-//         roadType: '',
-//         vehiclesInvolved: [
-//             {
-//                 licensePlate: '',
-//                 make: '',
-//                 model: ''
-//             },
-//             {
-//                 licensePlate: '',
-//                 make: '',
-//                 model: ''
-//             }
-//         ],
-//         drivers: [
-//             {
-//                 name: '',
-//                 licenseNumber: ''
-//             },
-//             {
-//                 name: '',
-//                 licenseNumber: ''
-//             }
-//         ],
-//         injuriesAndDamages: {
-//             injuriesDescription: '',
-//             damagesDescription: ''
-//         },
-//         collisionResult: '',
-//         collisionDescription: ''
-//     });
-
-//     const handleLocationSelect = (location) => {
-//         setFormData((prevData) => ({
-//             ...prevData,
-//             location: { lat: location.lat, lng: location.lng }
-//         }));
-//     };
-
-//     const handleChange = (e) => {
-//         const { name, value } = e.target;
-//         const keys = name.split('.');
-//         setFormData((prevData) => {
-//             const newData = { ...prevData };
-//             if (keys.length === 2) {
-//                 newData[keys[0]][keys[1]] = value;
-//             } else {
-//                 newData[name] = value;
-//             }
-//             return newData;
-//         });
-//     };
-
-//     const handleSubmit = async (event) => {
-//         event.preventDefault();
-//         try {
-//             const response = await fetch('/api/submitreports', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(formData)
-//             });
-
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-
-//             const result = await response.json();
-//             console.log('Report submitted successfully:', result);
-//             // Reset form or redirect as needed
-//         } catch (error) {
-//             console.error('Error submitting report:', error);
-//         }
-//     };
-
-//     return (
-//         <>
-//             <div className="container">
-//                 <h1 className="my-4">Road Traffic Accident Reporting System</h1>
-//                 <div className='row'>
-//                     <div className='col-sm-3'></div>
-//                     <div className='col-sm-6'>
-//                         <form onSubmit={handleSubmit}>
-//                             <h2>Incident Details</h2>
-//                             <div className="mb-3">
-//                                 <label htmlFor="date" className="form-label">Date</label>
-//                                 <input type="date" className="form-control" id="date" name="date" value={formData.date} onChange={handleChange} />
-//                             </div>
-//                             <div className="mb-3">
-//                                 <label htmlFor="time" className="form-label">Time</label>
-//                                 <input type="time" className="form-control" id="time" name="time" value={formData.time} onChange={handleChange} />
-//                             </div>
-//                             <div className="mb-3">
-//                                 <label className="form-label">Location</label>
-//                                 <LeafletMap onLocationSelect={handleLocationSelect} />
-//                             </div>
-//                             <h2>Vehicles Details</h2>
-//                             {formData.vehiclesInvolved.map((vehicle, index) => (
-//                                 <div key={index} className="mb-4">
-//                                     <h4>Vehicle {index + 1}</h4>
-//                                     <div className="row">
-//                                         <div className="col-md-4">
-//                                             <div className="form-group">
-//                                                 <label htmlFor={`licensePlate${index}`}>License Plate</label>
-//                                                 <input
-//                                                     type="text"
-//                                                     className="form-control"
-//                                                     id={`licensePlate${index}`}
-//                                                     name={`vehiclesInvolved.${index}.licensePlate`}
-//                                                     value={vehicle.licensePlate}
-//                                                     onChange={handleChange}
-//                                                     required
-//                                                 />
-//                                             </div>
-//                                         </div>
-//                                         <div className="col-md-4">
-//                                             <div className="form-group">
-//                                                 <label htmlFor={`make${index}`}>Make</label>
-//                                                 <input
-//                                                     type="text"
-//                                                     className="form-control"
-//                                                     id={`make${index}`}
-//                                                     name={`vehiclesInvolved.${index}.make`}
-//                                                     value={vehicle.make}
-//                                                     onChange={handleChange}
-//                                                     required
-//                                                 />
-//                                             </div>
-//                                         </div>
-//                                         <div className="col-md-4">
-//                                             <div className="form-group">
-//                                                 <label htmlFor={`model${index}`}>Model</label>
-//                                                 <input
-//                                                     type="text"
-//                                                     className="form-control"
-//                                                     id={`model${index}`}
-//                                                     name={`vehiclesInvolved.${index}.model`}
-//                                                     value={vehicle.model}
-//                                                     onChange={handleChange}
-//                                                     required
-//                                                 />
-//                                             </div>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                             ))}
-
-//                             <h2>Drivers Details</h2>
-//                             {formData.drivers.map((driver, index) => (
-//                                 <div key={index} className="mb-4">
-//                                     <h4>Driver {index + 1}</h4>
-//                                     <div className="row">
-//                                         <div className="col-md-6">
-//                                             <div className="form-group">
-//                                                 <label htmlFor={`driverName${index}`}>Name</label>
-//                                                 <input
-//                                                     type="text"
-//                                                     className="form-control"
-//                                                     id={`driverName${index}`}
-//                                                     name={`drivers.${index}.name`}
-//                                                     value={driver.name}
-//                                                     onChange={handleChange}
-//                                                     required
-//                                                 />
-//                                             </div>
-//                                         </div>
-//                                         <div className="col-md-6">
-//                                             <div className="form-group">
-//                                                 <label htmlFor={`licenseNumber${index}`}>License Number</label>
-//                                                 <input
-//                                                     type="text"
-//                                                     className="form-control"
-//                                                     id={`licenseNumber${index}`}
-//                                                     name={`drivers.${index}.licenseNumber`}
-//                                                     value={driver.licenseNumber}
-//                                                     onChange={handleChange}
-//                                                     required
-//                                                 />
-//                                             </div>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                             ))}
-//                             <h2>Collision Details</h2>
-//                             <div className="form-group mb-3">
-//                                 <label htmlFor="collisionResult">Collision Result</label>
-//                                 <textarea
-//                                     className="form-control"
-//                                     id="collisionResult"
-//                                     name="collisionResult"
-//                                     value={formData.collisionResult}
-//                                     onChange={handleChange}
-//                                     required
-//                                 ></textarea>
-
-//                             </div>
-                            
-//                             <div className="form-group mb-3">
-//                                 <label htmlFor="collisionDescription">Collision Description</label>
-//                                 <textarea
-//                                     className="form-control"
-//                                     id="collisionDescription"
-//                                     name="collisionDescription"
-//                                     value={formData.collisionDescription}
-//                                     onChange={handleChange}
-//                                     required
-//                                 ></textarea>
-//                             </div>
-//                             <h2>Injuries Details</h2>
-//                             <div className="form-group mb-3">
-//                                 <label htmlFor="injuriesDescription">Injuries Description</label>
-//                                 <textarea
-//                                     className="form-control"
-//                                     id="injuriesDescription"
-//                                     name="injuriesAndDamages.injuriesDescription"
-//                                     value={formData.injuriesAndDamages.injuriesDescription}
-//                                     onChange={handleChange}
-//                                     required
-//                                 ></textarea>
-//                             </div>
-
-//                             <div className="form-group mb-3">
-//                                 <label htmlFor="damagesDescription">Damages Description</label>
-//                                 <textarea
-//                                     className="form-control"
-//                                     id="damagesDescription"
-//                                     name="injuriesAndDamages.damagesDescription"
-//                                     value={formData.injuriesAndDamages.damagesDescription}
-//                                     onChange={handleChange}
-//                                     required
-//                                 ></textarea>
-//                             </div>
-
-//                             <button type="submit" className="btn btn-primary">Submit Report</button>
-//                         </form>
-//                     </div>
-//                 </div>
-//             </div>
-//             <Footer />
-//         </>
-//     );
-// };
-
-// export default Reports;
-
-
- 
